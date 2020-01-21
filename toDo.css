@@ -1,0 +1,26 @@
+body{
+    background-color:  #f0f2f4;
+}
+
+.remove-todo:hover {
+    color: #dc3545;
+    cursor: pointer;
+}
+
+.done-todo:hover {
+    color: #28a745;
+    cursor: pointer;
+}
+
+.todo-again-done:hover {
+    color: #ffc107;
+    cursor: pointer;
+}
+
+li .icon-action {
+    visibility: hidden;
+}
+
+li:hover .icon-action {
+    visibility: visible;
+}

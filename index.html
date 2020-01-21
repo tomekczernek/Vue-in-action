@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="toDo.css">
+        <script src="https://kit.fontawesome.com/e7875f8986.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        
+        <div id="app" class="d-flex justify-content-center">
+            <div class="col-11 col-xs-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 bg-light text-dark text-center my-5 shadow rounded">
+                <todo-header></todo-header>
+                <input class="w-100 py-2 px-3 border border-secondary rounded"
+                    v-model.trim="todoInputValue"
+                    @keyup.enter="addNewToDo(todoInputValue)"
+                    >
+                </input>
+                <p v-if="allIsDone" class="my-2 text-success">All done!</p>
+                <ul v-if="todos.length" class="list-group my-2">
+                    <todo-list-item 
+                        v-for="(todo, index) in todos"
+                        :todo="todo"
+                        :key="todo.id"
+                        @todo-done="doneToDo(index)"
+                        @todo-remove="removeToDo(index)"
+                        @todo-again-done="againToDo(index)"
+                        >
+                    </todo-list-item>
+                </ul>
+                <p v-else class="my-2">What do you have to do?</p>  
+                <todo-undo-button
+                    v-if="removeTodos.length" 
+                    @todo-undo="undoToDo"
+                    >
+                </todo-undo-button>
+                <todo-bin-button
+                    v-if="removeTodos.length" 
+                    @todo-bin="binToDo"
+                    >
+                </todo-bin-button>
+            </div>
+        </div>
+
+        <script src="toDo.js"></script>
+    </body>
+</html>
