@@ -44,7 +44,7 @@ var app = new Vue({
         todos:[
             {id: idNumber++, text: "Learn Vue!", complete: true},
             {id: idNumber++, text: "Learn Vue harder.", complete: false},
-            {id: idNumber++, text: "Do something good for World.", complete: false}
+            {id: idNumber++, text: "Do something good for the world.", complete: false}
         ],
         removeTodos:[],
         todoInputValue: "",
@@ -69,7 +69,7 @@ var app = new Vue({
         },
         checkAllIsDone(){
             if(this.todos.length){
-                let notDoneCount = this.todos.filter(t=> t.complete === false).length;
+                const notDoneCount = this.todos.filter(t=> t.complete === false).length;
                 this.allIsDone = notDoneCount === 0 ? true : false;
             }
             else
